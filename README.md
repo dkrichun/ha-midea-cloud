@@ -33,8 +33,8 @@ https://web.daichicloud.ru
 ### Ручная установка
 
 ```bash
-# Скопируйте custom_components/ha-midea в ваш Home Assistant
-cp -r custom_components/ha-midea /config/custom_components/
+# Скопируйте custom_components/ha_midea в ваш Home Assistant
+cp -r custom_components/ha_midea /config/custom_components/
 ```
 
 Перезапустите Home Assistant.
@@ -90,7 +90,7 @@ logger:
 
 ```
 custom_components/
-  ha-midea/
+  ha_midea/
     __init__.py          # Настройка интеграции
     manifest.json        # Метаданные
     config_flow.py       # Поток настройки через UI

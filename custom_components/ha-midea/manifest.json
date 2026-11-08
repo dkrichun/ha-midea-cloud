@@ -1,5 +1,5 @@
 {
-  "domain": "ha-midea",
+  "domain": "ha_midea",
   "name": "Daichi Comfort Cloud",
   "codeowners": ["@dkrichun"],
   "config_flow": true,
