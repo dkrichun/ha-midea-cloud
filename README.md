@@ -34,7 +34,7 @@ https://web.daichicloud.ru
 
 ```bash
 # Скопируйте custom_components/midea в ваш Home Assistant
-cp -r custom_components/midea /config/custom_components/
+cp -r custom_components/ha-midea /config/custom_components/
 ```
 
 Перезапустите Home Assistant.
