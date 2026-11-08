@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/github/v/release/dkrichun/ha-midea-cloud.svg?style=flat-square&label=version&color=blue)](https://github.com/dkrichun/ha-midea-cloud/releases/latest)
 
 Интеграция Home Assistant для управления кондиционерами Midea/Daichi через API Comfort Cloud.
-https://web.daichicloud.ru
+<https://web.daichicloud.ru>
 
 ## ✅ Возможности
 
@@ -51,13 +51,14 @@ cp -r custom_components/ha_midea /config/custom_components/
 ## 🎮 Поддерживаемые устройства
 
 Работает со всеми кондиционерами Daichi/Midea, подключёнными к Comfort Cloud:
+
 - Midea Breezeless series
 - Другие модели, поддерживаемые Daichi Cloud
 
 ## 📋 Поддерживаемые функции
 
 | Функция | Статус |
-|---------|--------|
+| --------- | -------- |
 | Включение/выключение | ✅ |
 | Установка температуры | ✅ |
 | Режим охлаждения | ✅ |
@@ -88,7 +89,7 @@ logger:
 
 ## 📁 Структура проекта
 
-```
+```text
 custom_components/
   ha_midea/
     __init__.py          # Настройка интеграции
