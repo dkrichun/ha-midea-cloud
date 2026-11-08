@@ -1,119 +1,120 @@
-# Daichi Comfort Cloud for Home Assistant
+# Daichi Comfort Cloud для Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![GitHub Release](https://img.shields.io/github/release/warpreality/daichi-ha.svg?style=flat-square)](https://github.com/warpreality/daichi-ha/releases)
+[![GitHub Release](https://img.shields.io/github/release/dkrichun/ha-midea-cloud.svg?style=flat-square)](https://github.com/dkrichun/ha-midea-cloud/releases)
+[![Version](https://img.shields.io/badge/version-v0.2.1-blue.svg)](https://github.com/dkrichun/ha-midea-cloud/releases/tag/v0.2.1)
 
-Home Assistant integration for controlling Daichi AC units via the Comfort Cloud API.
+Интеграция Home Assistant для управления кондиционерами Midea/Daichi через API Comfort Cloud.
+https://web.daichicloud.ru
 
-## ✅ Features
+## ✅ Возможности
 
-- 🌡️ **Temperature control** (16-30°C)
-- ❄️ **Operating modes**: cool, heat, fan, dry, auto
-- 💨 **Fan speed**: auto, 1-5
-- 🔄 **Preset modes**: eco, turbo, sleep, comfort sleep
-- 🎯 **Swing modes**: vertical, horizontal, 3D
-- 📊 **Sensors**: indoor temperature, outdoor temperature, humidity
-- 🔄 Automatic state refresh every 60 seconds
+- 🌡️ **Управление температурой** (16–30 °C)
+- ❄️ **Режимы работы**: охлаждение, обогрев, вентилятор, осушение, авто
+- 💨 **Скорость вентилятора**: авто, 1–5
+- 🔄 **Предустановленные режимы**: eco, turbo, sleep, comfort sleep
+- 🎯 **Режимы качания**: вертикальное, горизонтальное, 3D
+- 📊 **Датчики**: температура в помещении, температура на улице, влажность
+- 🔄 Автоматическое обновление состояния каждые 60 секунд
 
-## 📦 Installation
+## 📦 Установка
 
-### Via HACS (recommended)
+### Через HACS (рекомендуется)
 
-1. Make sure you have [HACS](https://hacs.xyz/) installed
-2. Go to HACS → Integrations
-3. Click ⋮ → Custom repositories
-4. Add the repository:
-   - URL: `https://github.com/warpreality/daichi-ha`
-   - Category: Integration
-5. Find "Daichi Comfort Cloud" and click "Install"
-6. Restart Home Assistant
+1. Убедитесь, что у вас установлен [HACS](https://hacs.xyz/)
+2. Перейдите в HACS → Интеграции
+3. Нажмите ⋮ → Пользовательские репозитории
+4. Добавьте репозиторий:
+   - URL: `https://github.com/dkrichun/ha-midea-cloud`
+   - Категория: Integration
+5. Найдите «Daichi Comfort Cloud» и нажмите «Установить»
+6. Перезапустите Home Assistant
 
-### Manual installation
+### Ручная установка
 
 ```bash
-# Copy custom_components/daichi into your Home Assistant
-cp -r custom_components/daichi /config/custom_components/
+# Скопируйте custom_components/midea в ваш Home Assistant
+cp -r custom_components/midea /config/custom_components/
 ```
 
-Restart Home Assistant.
+Перезапустите Home Assistant.
 
-## ⚙️ Configuration
+## ⚙️ Настройка
 
-1. Go to **Settings** → **Devices & Services**
-2. Click **Add integration**
-3. Find **Daichi Comfort Cloud**
-4. Enter your credentials:
-   - **Email**: the email you use for Daichi Comfort Cloud
-   - **Password**: your password
+1. Перейдите в **Настройки** → **Устройства и службы**
+2. Нажмите **Добавить интеграцию**
+3. Найдите **Daichi Comfort Cloud**
+4. Введите свои учётные данные:
+   - **Email**: адрес электронной почты, используемый для Daichi Comfort Cloud
+   - **Пароль**: ваш пароль
 
-## 🎮 Supported devices
+## 🎮 Поддерживаемые устройства
 
-Works with all Daichi/Midea AC units connected to Comfort Cloud:
+Работает со всеми кондиционерами Daichi/Midea, подключёнными к Comfort Cloud:
 - Midea Breezeless series
-- And other models supported by Daichi Cloud
+- Другие модели, поддерживаемые Daichi Cloud
 
-## 📋 Supported features
+## 📋 Поддерживаемые функции
 
-| Feature | Status |
+| Функция | Статус |
 |---------|--------|
-| Power on/off | ✅ |
-| Set temperature | ✅ |
-| Cooling mode | ✅ |
-| Heating mode | ✅ |
-| Fan-only mode | ✅ |
-| Dry mode | ✅ |
-| Auto mode | ✅ |
-| Fan speed (auto, 1-5) | ✅ |
-| Eco mode | ✅ |
-| Turbo mode | ✅ |
-| Sleep mode | ✅ |
-| Vertical swing | ✅ |
-| Horizontal swing | ✅ |
-| 3D swing | ✅ |
-| Temperature sensor | ✅ |
-| Humidity sensor | ✅ |
+| Включение/выключение | ✅ |
+| Установка температуры | ✅ |
+| Режим охлаждения | ✅ |
+| Режим обогрева | ✅ |
+| Режим только вентилятора | ✅ |
+| Режим осушения | ✅ |
+| Автоматический режим | ✅ |
+| Скорость вентилятора (авто, 1–5) | ✅ |
+| Режим Eco | ✅ |
+| Режим Turbo | ✅ |
+| Режим Sleep | ✅ |
+| Вертикальное качание | ✅ |
+| Горизонтальное качание | ✅ |
+| 3D-качание | ✅ |
+| Датчик температуры | ✅ |
+| Датчик влажности | ✅ |
 
-## 🔧 Debugging
+## 🔧 Отладка
 
-To enable verbose logging, add to `configuration.yaml`:
+Чтобы включить подробное логирование, добавьте в `configuration.yaml`:
 
 ```yaml
 logger:
   default: info
   logs:
-    custom_components.daichi: debug
+    custom_components.midea: debug
 ```
 
-## 📁 Project structure
+## 📁 Структура проекта
 
 ```
 custom_components/
-  daichi/
-    __init__.py          # Integration setup
-    manifest.json        # Metadata
-    config_flow.py       # UI setup flow
-    const.py             # Constants and Function IDs
-    api.py               # API client
-    coordinator.py       # Data update coordinator
-    climate.py           # Climate entity
-    sensor.py            # Sensors
-    exceptions.py        # Exceptions
-    translations/        # Translations
+  midea/
+    __init__.py          # Настройка интеграции
+    manifest.json        # Метаданные
+    config_flow.py       # Поток настройки через UI
+    const.py             # Константы и Function IDs
+    api.py               # Клиент API
+    coordinator.py       # Координатор обновления данных
+    climate.py           # Сущность климата
+    sensor.py            # Датчики
+    exceptions.py        # Исключения
+    translations/        # Переводы
 ```
 
-## 📖 API docs
+## 📖 Документация API
 
-For the full list of Function IDs for device control, see [FUNCTION_IDS.md](FUNCTION_IDS.md).
+Полный список Function IDs для управления устройством см. в [FUNCTION_IDS.md](https://github.com/dkrichun/ha-midea-cloud/blob/main/FUNCTION_IDS.md).
 
+## 📄 Лицензия
 
-## 📄 License
+MIT License — см. [LICENSE](https://github.com/dkrichun/ha-midea-cloud/blob/main/LICENSE).
 
-MIT License - see [LICENSE](LICENSE)
+## 🤝 Поддержка
 
-## 🤝 Support
+Если возникли проблемы:
 
-If you run into issues:
-
-1. Enable debug logging
-2. Check [Issues](https://github.com/warpreality/daichi-ha/issues)
-3. Open a new issue with details and logs
+1. Включите отладочное логирование
+2. Проверьте [Issues](https://github.com/dkrichun/ha-midea-cloud/issues)
+3. Создайте новый issue с подробностями и логами

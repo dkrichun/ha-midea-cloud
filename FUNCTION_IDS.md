@@ -1,89 +1,90 @@
-# Function IDs for Daichi Device Control
+# Function IDs для управления устройствами Daichi
 
-> **Function IDs are device-specific.** Different air conditioner models report different
-> function IDs in their `pult`, and the cloud rejects unknown IDs with
-> `422 "Функция не поддерживается устройством"`. The integration therefore resolves the
-> ID for each device at runtime by matching `metaData.bleTagInfo.bleTag` /
-> `bleOnCommand` (including nested `linkedFunction` entries) — see
-> `FUNCTION_BLE_TAGS` in `const.py` and `find_function` in `device_control.py`.
+> **Function ID зависят от устройства.** Разные модели кондиционеров возвращают разные
+> Function ID в своём `pult`, и облако отклоняет неизвестные ID с ошибкой
+> `422 "Функция не поддерживается устройством"`. Поэтому интеграция определяет
+> ID для каждого устройства во время выполнения путём сопоставления
+> `metaData.bleTagInfo.bleTag` / `bleOnCommand` (включая вложенные записи
+> `linkedFunction`) — см. `FUNCTION_BLE_TAGS` в `const.py` и `find_function`
+> в `device_control.py`.
 >
-> The IDs below are from the model the integration was originally developed on and are
-> used only as a fallback when a function has no `bleTagInfo`. The BLE tag columns are
-> what actually identifies a function.
+> ID ниже взяты с модели, на которой изначально разрабатывалась интеграция,
+> и используются только как резервный вариант, когда у функции нет `bleTagInfo`.
+> Именно столбцы BLE-тегов фактически идентифицируют функцию.
 
-## Function IDs (reference model)
+## Function ID (эталонная модель)
 
-### Basic Functions
+### Базовые функции
 
-| Function ID | Name | Type | Range/Values | BLE Tag | Description |
-|-------------|------|------|--------------|---------|-------------|
-| 350 | Power | boolean | true/false | power | Turn device on/off |
-| 351 | Temperature | number | 16-30 | setTemp | Set temperature (°C) |
+| Function ID | Название | Тип | Диапазон/Значения | BLE-тег | Описание |
+|-------------|----------|-----|-------------------|---------|----------|
+| 350 | Питание | boolean | true/false | power | Включение/выключение устройства |
+| 351 | Температура | number | 16–30 | setTemp | Установка температуры (°C) |
 
-### Operating Modes (Mode of operation)
+### Режимы работы (Mode of operation)
 
-| Function ID | Name | applyable | BLE Tag | BLE Command | Description |
-|-------------|------|-----------|---------|-------------|-------------|
-| 352 | Cool | true | mode | cool | Cooling mode |
-| 353 | Heat | true | mode | heat | Heating mode |
-| 354 | Auto | true | mode | auto | Automatic mode |
-| 355 | Dry | true | mode | dry | Dehumidification mode |
-| 356 | Fan | true | mode | vent | Ventilation mode |
+| Function ID | Название | applyable | BLE-тег | BLE-команда | Описание |
+|-------------|----------|-----------|---------|-------------|----------|
+| 352 | Охлаждение | true | mode | cool | Режим охлаждения |
+| 353 | Обогрев | true | mode | heat | Режим обогрева |
+| 354 | Авто | true | mode | auto | Автоматический режим |
+| 355 | Осушение | true | mode | dry | Режим осушения |
+| 356 | Вентилятор | true | mode | vent | Режим вентиляции |
 
-**Note:** For operating modes, `applyable: true` means the function needs to be activated.
+**Примечание:** для режимов работы `applyable: true` означает, что функцию нужно активировать.
 
-### Fan Speed
+### Скорость вентилятора
 
-| Function ID | Name | Type | Range | applyable | BLE Tag | Description |
-|-------------|------|------|-------|-----------|---------|-------------|
-| 357 | Auto | boolean | - | true | fanSpeed | Automatic speed (BLE command: "0") |
-| 358 | Fan speed | number | 1-5 | false | fanSpeed | Fan speed (1-5) |
+| Function ID | Название | Тип | Диапазон | applyable | BLE-тег | Описание |
+|-------------|----------|-----|----------|-----------|---------|----------|
+| 357 | Авто | boolean | — | true | fanSpeed | Автоматическая скорость (BLE-команда: "0") |
+| 358 | Скорость вентилятора | number | 1–5 | false | fanSpeed | Скорость вентилятора (1–5) |
 
-**Note:** Function ID 357 (Auto) is a linkedFunction for 358.
+**Примечание:** Function ID 357 (Авто) является `linkedFunction` для 358.
 
-### Swing
+### Качание (Swing)
 
-| Function ID | Name | applyable | BLE Tag | BLE On Command | BLE Off Command | Description |
-|-------------|------|-----------|---------|----------------|-----------------|-------------|
-| 359 | Vertical swing | false | flow | vert_on | off | Vertical swing |
-| 360 | Horizontal swing | false | flow | horizont_on | off | Horizontal swing |
-| 361 | 3D swing | false | flow | 3d_on | off | 3D swing |
+| Function ID | Название | applyable | BLE-тег | BLE-команда вкл. | BLE-команда выкл. | Описание |
+|-------------|----------|-----------|---------|------------------|-------------------|----------|
+| 359 | Вертикальное качание | false | flow | vert_on | off | Вертикальное качание |
+| 360 | Горизонтальное качание | false | flow | horizont_on | off | Горизонтальное качание |
+| 361 | 3D-качание | false | flow | 3d_on | off | 3D-качание |
 
-### Additional Modes
+### Дополнительные режимы
 
-| Function ID | Name | applyable | ignorePowerOff | BLE Tag | BLE On Command | BLE Off Command | Description |
-|-------------|------|-----------|----------------|---------|----------------|-----------------|-------------|
-| 362 | Comfortable Sleep | false | true | none | on | off | Comfortable sleep (with parameters) |
-| 363 | Eco | false | false | economy | on | off | Eco mode |
-| 364 | Turbo | false | false | powerfull | on | off | Turbo mode |
-| 365 | Sound Off | false | true | beepOff | on | off | Silent mode (sound off) |
-| 366 | Sleep | false | false | sleep | on | off | Sleep mode |
-| 332 | Heating +8°C | false | false | heat8 | on | off | Heating +8°C |
+| Function ID | Название | applyable | ignorePowerOff | BLE-тег | BLE-команда вкл. | BLE-команда выкл. | Описание |
+|-------------|----------|-----------|----------------|---------|------------------|-------------------|----------|
+| 362 | Комфортный сон | false | true | none | on | off | Комфортный сон (с параметрами) |
+| 363 | Eco | false | false | economy | on | off | Режим Eco |
+| 364 | Turbo | false | false | powerfull | on | off | Режим Turbo |
+| 365 | Без звука | false | true | beepOff | on | off | Тихий режим (без звука) |
+| 366 | Сон | false | false | sleep | on | off | Режим сна |
+| 332 | Обогрев +8 °C | false | false | heat8 | on | off | Обогрев +8 °C |
 
-## Features
+## Особенности
 
 ### applyable
 
-- `applyable: true` - Function is activated via control request (e.g., operating modes)
-- `applyable: false` - Function is toggled (on/off)
+- `applyable: true` — функция активируется через запрос управления (например, режимы работы)
+- `applyable: false` — функция переключается (вкл/выкл)
 
 ### ignorePowerOff
 
-- `ignorePowerOff: true` - Function works even when device is off (e.g., Sound Off, Comfortable Sleep)
-- `ignorePowerOff: false` - Function works only when device is on
+- `ignorePowerOff: true` — функция работает даже при выключенном устройстве (например, «Без звука», «Комфортный сон»)
+- `ignorePowerOff: false` — функция работает только при включённом устройстве
 
 ### linkedFunction
 
-Some functions are linked to others:
-- Function ID 351 (Temperature) has linkedFunction 350 (Power)
-- Function ID 358 (Fan speed) has linkedFunction 357 (Auto)
+Некоторые функции связаны с другими:
+- Function ID 351 (Температура) имеет `linkedFunction` 350 (Питание)
+- Function ID 358 (Скорость вентилятора) имеет `linkedFunction` 357 (Авто)
 
-## Home Assistant Mapping
+## Сопоставление с Home Assistant
 
-### Operating Mode (HVAC Mode)
+### Режим работы (HVAC Mode)
 
-| Home Assistant Mode | Function ID | Value |
-|---------------------|-------------|-------|
+| Режим Home Assistant | Function ID | Значение |
+|----------------------|-------------|----------|
 | `off` | 350 | false |
 | `cool` | 352 | true (applyable) |
 | `heat` | 353 | true (applyable) |
@@ -91,10 +92,10 @@ Some functions are linked to others:
 | `fan_only` | 356 | true (applyable) |
 | `auto` | 354 | true (applyable) |
 
-### Fan Speed (Fan Mode)
+### Скорость вентилятора (Fan Mode)
 
-| Home Assistant Fan Mode | Function ID | Value |
-|-------------------------|-------------|-------|
+| Режим вентилятора HA | Function ID | Значение |
+|----------------------|-------------|----------|
 | `auto` | 357 | true |
 | `1` | 358 | 1 |
 | `2` | 358 | 2 |
@@ -102,14 +103,14 @@ Some functions are linked to others:
 | `4` | 358 | 4 |
 | `5` | 358 | 5 |
 
-### Temperature
+### Температура
 
-| Parameter | Function ID | Value |
-|-----------|-------------|-------|
-| Target Temperature | 351 | number (16-30) |
+| Параметр | Function ID | Значение |
+|----------|-------------|----------|
+| Целевая температура | 351 | number (16–30) |
 
-### Power On/Off
+### Включение/выключение
 
-| Parameter | Function ID | Value |
-|-----------|-------------|-------|
-| Power | 350 | boolean |
+| Параметр | Function ID | Значение |
+|----------|-------------|----------|
+| Питание | 350 | boolean |
