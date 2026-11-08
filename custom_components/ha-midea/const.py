@@ -1,7 +1,7 @@
 """Constants for the Daichi integration."""
 from __future__ import annotations
 
-DOMAIN = "daichi"
+DOMAIN = "ha-midea"
 
 # Configuration keys
 CONF_USERNAME = "username"
