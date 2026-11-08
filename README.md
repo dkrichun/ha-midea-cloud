@@ -1,8 +1,8 @@
 # Daichi Comfort Cloud для Home Assistant
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![GitHub Release](https://img.shields.io/github/release/dkrichun/ha-midea-cloud.svg?style=flat-square)](https://github.com/dkrichun/ha-midea-cloud/releases)
-[![Version](https://img.shields.io/badge/version-v0.2.1-blue.svg)](https://github.com/dkrichun/ha-midea-cloud/releases/tag/v0.2.1)
+[![GitHub Release](https://img.shields.io/github/release/dkrichun/ha-midea-cloud.svg?style=flat-square)](https://github.com/dkrichun/ha-midea-cloud/releases/latest)
+[![Version](https://img.shields.io/github/v/release/dkrichun/ha-midea-cloud.svg?style=flat-square&label=version&color=blue)](https://github.com/dkrichun/ha-midea-cloud/releases/latest)
 
 Интеграция Home Assistant для управления кондиционерами Midea/Daichi через API Comfort Cloud.
 https://web.daichicloud.ru
