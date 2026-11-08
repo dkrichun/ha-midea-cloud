@@ -1,12 +1,12 @@
 {
-  "domain": "daichi",
+  "domain": "midea",
   "name": "Daichi Comfort Cloud",
-  "codeowners": ["@warpreality"],
+  "codeowners": ["@dkrichun"],
   "config_flow": true,
-  "documentation": "https://github.com/warpreality/daichi-ha",
+  "documentation": "https://github.com/dkrichun/ha-midea-cloud",
   "integration_type": "device",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/warpreality/daichi-ha/issues",
+  "issue_tracker": "https://github.com/dkrichun/ha-midea-cloud/issues",
   "requirements": ["aiohttp>=3.8.0"],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
